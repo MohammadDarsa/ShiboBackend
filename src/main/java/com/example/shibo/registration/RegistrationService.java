@@ -56,72 +56,91 @@ public class RegistrationService {
     }
 
     private String buildEmail(String name, String link) {
-        return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
-                "\n" +
-                "<span style=\"display:none;font-size:1px;color:#fff;max-height:0\"></span>\n" +
-                "\n" +
-                "  <table role=\"presentation\" width=\"100%\" style=\"border-collapse:collapse;min-width:100%;width:100%!important\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
-                "    <tbody><tr>\n" +
-                "      <td width=\"100%\" height=\"53\" bgcolor=\"#0b0c0c\">\n" +
-                "        \n" +
-                "        <table role=\"presentation\" width=\"100%\" style=\"border-collapse:collapse;max-width:580px\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">\n" +
-                "          <tbody><tr>\n" +
-                "            <td width=\"70\" bgcolor=\"#0b0c0c\" valign=\"middle\">\n" +
-                "                <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse\">\n" +
-                "                  <tbody><tr>\n" +
-                "                    <td style=\"padding-left:10px\">\n" +
-                "                  \n" +
-                "                    </td>\n" +
-                "                    <td style=\"font-size:28px;line-height:1.315789474;Margin-top:4px;padding-left:10px\">\n" +
-                "                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">Confirm your email</span>\n" +
-                "                    </td>\n" +
-                "                  </tr>\n" +
-                "                </tbody></table>\n" +
-                "              </a>\n" +
-                "            </td>\n" +
-                "          </tr>\n" +
-                "        </tbody></table>\n" +
-                "        \n" +
-                "      </td>\n" +
-                "    </tr>\n" +
-                "  </tbody></table>\n" +
-                "  <table role=\"presentation\" class=\"m_-6186904992287805515content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;max-width:580px;width:100%!important\" width=\"100%\">\n" +
-                "    <tbody><tr>\n" +
-                "      <td width=\"10\" height=\"10\" valign=\"middle\"></td>\n" +
-                "      <td>\n" +
-                "        \n" +
-                "                <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse\">\n" +
-                "                  <tbody><tr>\n" +
-                "                    <td bgcolor=\"#1D70B8\" width=\"100%\" height=\"10\"></td>\n" +
-                "                  </tr>\n" +
-                "                </tbody></table>\n" +
-                "        \n" +
-                "      </td>\n" +
-                "      <td width=\"10\" valign=\"middle\" height=\"10\"></td>\n" +
-                "    </tr>\n" +
-                "  </tbody></table>\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "  <table role=\"presentation\" class=\"m_-6186904992287805515content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;max-width:580px;width:100%!important\" width=\"100%\">\n" +
-                "    <tbody><tr>\n" +
-                "      <td height=\"30\"><br></td>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
-                "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
-                "        \n" +
-                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Activate Now</a> </p></blockquote>\n Link will expire in 15 minutes. <p>See you soon</p>" +
-                "        \n" +
-                "      </td>\n" +
-                "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "      <td height=\"30\"><br></td>\n" +
-                "    </tr>\n" +
-                "  </tbody></table><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
-                "\n" +
-                "</div></div>";
+
+        return "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "  <head>\n" +
+                "    <meta charset=\"UTF-8\" />\n" +
+                "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
+                "    <style>\n" +
+                "      body {\n" +
+                "        font-family: sans-serif;\n" +
+                "        color: #153243;\n" +
+                "        background-color: #f4f9e9;\n" +
+                "      }\n" +
+                "      a {\n" +
+                "        text-decoration: none;\n" +
+                "      }\n" +
+                "      .container {\n" +
+                "        margin: 0 4rem;\n" +
+                "      }\n" +
+                "      .d-flex {\n" +
+                "        display: flex;\n" +
+                "      }\n" +
+                "      .justify-content-around {\n" +
+                "        justify-content: space-around;\n" +
+                "      }\n" +
+                "      .align-items-center {\n" +
+                "        align-items: center;\n" +
+                "      }\n" +
+                "      .justify-content-center {\n" +
+                "        justify-content: center;\n" +
+                "      }\n" +
+                "      .display-5 {\n" +
+                "        font-size: 3rem;\n" +
+                "      }\n" +
+                "    </style>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "    <div class=\"container\">\n" +
+                "      <h1 class=\"display-5\" style=\"margin-top: 2rem\">Confirm your email</h1>\n" +
+                "      <h4 style=\"margin-bottom: 0; margin-top: 2rem\">\n" +
+                "        Hello "+name+" , you based Shibo enjoyer,\n" +
+                "      </h4>\n" +
+                "      <p class=\"h4\">\n" +
+                "        Thank you for registering :3 . Please click on the below link to\n" +
+                "        activate your account:\n" +
+                "      </p>\n" +
+                "      <div class=\"d-flex justify-content-around\">\n" +
+                "        <div class=\"d-flex align-items-center justify-content-center\">\n" +
+                "          <a\n" +
+                "            style=\"\n" +
+                "              background-color: #284b63;\n" +
+                "              color: white;\n" +
+                "              padding: 5px;\n" +
+                "              border-radius: 4px;\n" +
+                "              display: block;\n" +
+                "              font-size: 20px;\n" +
+                "            \"\n" +
+                "            href=\""+link+"\"\n" +
+                "          >\n" +
+                "            activate your account\n" +
+                "          </a>\n" +
+                "          <img\n" +
+                "            style=\"width: 100px\"\n" +
+                "            src=\"http://www.anime-evo.net/wp-content/uploads/2015/10/classroom_crisis-18.jpg\"\n" +
+                "            alt=\"loli\"\n" +
+                "          />\n" +
+                "        </div>\n" +
+                "        <h1 style=\"font-size: 20rem; margin: 0 0\">:3</h1>\n" +
+                "      </div>\n" +
+                "      <footer>\n" +
+                "        <h3>\n" +
+                "          Link will expire in 15 minutes.<br />\n" +
+                "          See you in jail\n" +
+                "          <a\n" +
+                "            href=\"https://www.youtube.com/watch?v=YWcrfp_dXKM\"\n" +
+                "            style=\"color: #153243\"\n" +
+                "            target=\"_blank\"\n" +
+                "            id=\"uwu\"\n" +
+                "            >UwU</a\n" +
+                "          >\n" +
+                "        </h3>\n" +
+                "      </footer>\n" +
+                "    </div>\n" +
+                "  </body>\n" +
+                "</html>\n";
     }
 
 }
