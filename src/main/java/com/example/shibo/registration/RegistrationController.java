@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "api/v1/registration")
 @AllArgsConstructor
@@ -18,13 +18,12 @@ public class RegistrationController {
     @PostMapping
     public ResponseEntity<String> register(@Valid @RequestBody RegistrationRequest request) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+
         return ResponseEntity.ok().headers(headers).body(registrationService.register(request));
     }
     @GetMapping(path = "confirm")
     public ResponseEntity<String> confirm(@RequestParam("token") String token) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
         return ResponseEntity.ok().headers(headers).body(registrationService.confirmToken(token));
     }
 }
