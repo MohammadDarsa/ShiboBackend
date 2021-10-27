@@ -1,11 +1,13 @@
 package com.example.shibo.registration;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:8080/api/v1/registration")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping(path = "api/v1/registration")
 @AllArgsConstructor
@@ -13,14 +15,16 @@ public class RegistrationController {
 
     private RegistrationService registrationService;
 
-    @CrossOrigin(origins = "http://localhost:8080/api/v1/registration")
     @PostMapping
-    public String register(@Valid @RequestBody RegistrationRequest request) {
-        return registrationService.register(request);
+    public ResponseEntity<String> register(@Valid @RequestBody RegistrationRequest request) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        return ResponseEntity.ok().headers(headers).body(registrationService.register(request));
     }
-    @CrossOrigin(origins = "http://localhost:8080/api/v1/registration")
     @GetMapping(path = "confirm")
-    public String confirm(@RequestParam("token") String token) {
-        return registrationService.confirmToken(token);
+    public ResponseEntity<String> confirm(@RequestParam("token") String token) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        return ResponseEntity.ok().headers(headers).body(registrationService.confirmToken(token));
     }
 }
