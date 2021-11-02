@@ -1,4 +1,5 @@
 package com.example.shibo.appuser;
+import com.example.shibo.exception_handler.UserAlreadyExistsException;
 import com.example.shibo.registration.token.ConfirmationToken;
 import com.example.shibo.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class AppUserService implements UserDetailsService {
     public String signUp(AppUser appUser) {
         boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
         if(userExists) {
-            throw new IllegalStateException("email already taken");
+            throw new UserAlreadyExistsException("email already taken");
         }
         String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);

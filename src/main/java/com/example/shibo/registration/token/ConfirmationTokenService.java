@@ -1,5 +1,6 @@
 package com.example.shibo.registration.token;
 
+import com.example.shibo.exception_handler.TokenNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class ConfirmationTokenService {
 
     public void setConfirmedAt(String token) {
         ConfirmationToken ct =  getToken(token).orElse(null);
-        if(ct == null) throw new IllegalStateException("token not found");
+        if(ct == null) throw new TokenNotFoundException("token not found");
         ct.setConfirmedAt(LocalDateTime.now());
         saveConfirmationToken(ct);
 //        return confirmationTokenRepository.updateConfirmedAt(token, LocalDateTime.now());

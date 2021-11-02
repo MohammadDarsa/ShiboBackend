@@ -4,10 +4,13 @@ import com.example.shibo.appuser.AppUser;
 import com.example.shibo.appuser.AppUserRole;
 import com.example.shibo.appuser.AppUserService;
 import com.example.shibo.email.EmailSender;
+import com.example.shibo.exception_handler.EmailNotValidException;
+import com.example.shibo.exception_handler.PasswordNotValidException;
 import com.example.shibo.registration.token.ConfirmationToken;
 import com.example.shibo.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -25,11 +28,11 @@ public class RegistrationService {
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
         if(!isValidEmail) {
-            throw new IllegalStateException("email not valid");
+            throw new EmailNotValidException("invalid email");
         }
         boolean isValidPassword = passwordValidator.test(request.getPassword());
         if(!isValidPassword) {
-            throw new IllegalStateException("password not valid");
+            throw new PasswordNotValidException("invalid password");
         }
         String token =  appUserService.signUp(new AppUser(request.getUsername(), request.getEmail(), request.getPassword(), AppUserRole.USER));
         String link = "http://localhost:8080/api/v1/registration/confirm?token="+token;

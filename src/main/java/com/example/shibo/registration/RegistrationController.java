@@ -16,11 +16,11 @@ public class RegistrationController {
     private RegistrationService registrationService;
 
     @PostMapping
-    public ResponseEntity<String> register(@Valid @RequestBody RegistrationRequest request) {
+    public ResponseEntity<String> register(@RequestBody RegistrationRequest request) {
         HttpHeaders headers = new HttpHeaders();
-
         return ResponseEntity.ok().headers(headers).body(registrationService.register(request));
     }
+
     @GetMapping(path = "confirm")
     public ResponseEntity<String> confirm(@RequestParam("token") String token) {
         HttpHeaders headers = new HttpHeaders();
